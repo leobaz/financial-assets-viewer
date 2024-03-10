@@ -2,26 +2,25 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.5.
 
-## Development server
+## Prerequisites
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+To install Angular on your local system, you need the following:
 
-## Code scaffolding
+- Node.js
+- npm package manager
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Install the Angular CLI
 
-## Build
+To install the Angular CLI, open a terminal window and run the following command:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- `npm install -g @angular/cli`
 
-## Running unit tests
+## Run the application
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. Navigate to the workspace folder,
+2. Run the following command `ng serve`
+3. Navigate to `http://localhost:4200/`
 
-## Running end-to-end tests
+### Android Embeddability with Ionic
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Android Embeddability can be achieved by adding Ionic to this project and following the [documentation](https://ionicframework.com/docs/intro/cdn#:~:text=For%20adding%20Ionic%20to%20an,Angular%20CLI's%20ng%20add%20feature.&text=This%20will%20add%20the%20necessary,as%20add%20the%20styles%20needed.)
