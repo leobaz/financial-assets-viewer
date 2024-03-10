@@ -1,0 +1,98 @@
+<section class="p-2">
+  @if(asset?.id) {
+  <h3 class="flex align-items-center">
+    @if(asset?.logoUrl) {
+    <img
+      class="mr-2 w-3rem h-3rem"
+      [src]="asset?.logoUrl"
+      [alt]="asset?.companyName"
+    />
+    } @else {
+    <i class="pi pi-image text-6xl"></i>
+    }
+    {{ asset?.name }}
+    <span class="text-sm text-gray-500 ml-2">{{ asset?.ticker }}</span>
+  </h3>
+
+  <p class="text-gray-500 flex justify-content-between">
+    Industry
+    <span class="text-gray-900">{{ asset?.industry }}</span>
+  </p>
+
+  <p class="text-gray-500 flex justify-content-between">
+    Company name
+    <span class="text-gray-900">{{ asset?.companyName }}</span>
+  </p>
+
+  @if(asset?.ceo) {
+  <p class="text-gray-500 flex justify-content-between">
+    CEO
+    <span class="text-gray-900">{{ asset?.ceo }}</span>
+  </p>
+  }
+
+  <p class="text-gray-500 flex justify-content-between">
+    Last close price
+    <span class="text-gray-900"
+      >{{ asset?.lastClosePrice | number }} {{ asset?.currency }}</span
+    >
+  </p>
+
+  <p class="text-gray-500 flex justify-content-between">
+    Market cap
+    <span class="text-gray-900">{{ asset?.marketCap | number }}</span>
+  </p>
+
+  <p class="text-gray-500 flex justify-content-between">
+    Average price target
+    <span class="text-gray-900"
+      >{{ asset?.priceTarget?.average | number }} {{ asset?.currency }}</span
+    >
+  </p>
+  @if(asset?.profitMargin) {
+  <p class="text-gray-500 flex justify-content-between">
+    Profit margin
+    <span [ngClass]="getMarginClass(asset?.profitMargin ?? 0)"
+      >{{ asset?.profitMargin | number : "1.2-2" }} {{ asset?.currency }}</span
+    >
+  </p>
+  } @if(asset?.priceToBookRatio) {
+  <p class="text-gray-500 flex justify-content-between">
+    Price to book ratio
+    <span class="text-gray-900"
+      >{{ asset?.priceToBookRatio | number : "1.2-2" }}
+      {{ asset?.currency }}</span
+    >
+  </p>
+  } @if(asset?.priceToSalesRatio) {
+  <p class="text-gray-500 flex justify-content-between">
+    Price to sales ratio
+    <span class="text-gray-900"
+      >{{ asset?.priceToSalesRatio | number : "1.2-2" }}
+      {{ asset?.currency }}</span
+    >
+  </p>
+  } @if(asset?.analystRating) {
+  <h4 class="mb-0">Analyst rating</h4>
+  <p class="text-gray-500 flex justify-content-between">
+    Buy
+    <span class="text-gray-900">{{ asset?.analystRating?.buy }}</span>
+  </p>
+  <p class="text-gray-500 flex justify-content-between">
+    Sell
+    <span class="text-gray-900">{{ asset?.analystRating?.sell }}</span>
+  </p>
+  <p class="text-gray-500 flex justify-content-between">
+    Hold
+    <span class="text-gray-900">{{ asset?.analystRating?.hold }}</span>
+  </p>
+  <p class="text-gray-500 flex justify-content-between">
+    Strong buy
+    <span class="text-gray-900">{{ asset?.analystRating?.strongBuy }}</span>
+  </p>
+  <p class="text-gray-500 flex justify-content-between">
+    Strong sell
+    <span class="text-gray-900">{{ asset?.analystRating?.strongSell }}</span>
+  </p>
+  } }
+</section>

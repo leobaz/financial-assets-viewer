@@ -1,0 +1,50 @@
+<div class="flex">
+  <p-button
+    styleClass="mb-3 mr-5"
+    label="Filters"
+    [text]="true"
+    [raised]="true"
+    severity="secondary"
+    icon="pi pi-filter"
+    (click)="onToggleFilter()"
+  ></p-button>
+  <button
+    pButton
+    label="Clear"
+    class="p-button-outlined h-3rem"
+    icon="pi pi-filter-slash"
+    (click)="clear()"
+  ></button>
+</div>
+
+@if(showFilters) {
+<section class="flex">
+  <p-multiSelect
+    styleClass="w-full"
+    placeholder="Industry"
+    [options]="industries"
+    [(ngModel)]="selectedIndustries"
+    optionLabel="name"
+    (onChange)="onIndustrySelectChange($event.value)"
+  ></p-multiSelect>
+
+  <div class="ml-4 w-5">
+    <label class="text-gray-500">Profit Margin Range</label>
+    <p-slider
+      styleClass="mt-2 mb-2"
+      [(ngModel)]="rangeValues"
+      [range]="true"
+      [min]="-5"
+      [max]="5"
+      [step]="0.01"
+      (onSlideEnd)="onRangeValuesChange($event.values)"
+    ></p-slider>
+    <div
+      class="flex align-items-center px-2 justify-content-between text-gray-500"
+    >
+      <span>{{ rangeValues[0] | number : "1.2-2" }}</span>
+      <span>{{ rangeValues[1] | number : "1.2-2" }}</span>
+    </div>
+  </div>
+</section>
+}

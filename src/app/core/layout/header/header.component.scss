@@ -1,0 +1,8 @@
+.user-name {
+  display: none;
+}
+@media only screen and (min-width: 480px) {
+  .user-name {
+    display: inline;
+  }
+}

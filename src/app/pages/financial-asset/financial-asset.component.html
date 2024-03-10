@@ -1,0 +1,88 @@
+<section class="ml-3">
+  <h2 class="text-gray-500">Assets</h2>
+  <app-asset-filters
+    [assets]="assets"
+    [industries]="industries"
+    [rangeValues]="rangeValues"
+  ></app-asset-filters>
+</section>
+
+<p-table
+  #dt
+  [value]="filteredAssets"
+  [tableStyle]="{ 'min-width': '50rem' }"
+  styleClass="p-datatable-striped mt-3"
+  [scrollable]="true"
+  [paginator]="true"
+  [rows]="10"
+  [rowsPerPageOptions]="[5, 10, 20]"
+  [globalFilterFields]="['name', 'industry', 'profitMargin']"
+>
+  <ng-template pTemplate="caption">
+    <div class="flex">
+      <span class="p-input-icon-left ml-auto">
+        <i class="pi pi-search"></i>
+        <input
+          pInputText
+          type="text"
+          (input)="dt.filterGlobal($any($event.target).value, 'contains')"
+          placeholder="Search keyword"
+        />
+      </span>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th style="width: 2%" pFrozenColumn></th>
+      <th pSortableColumn="ticker" style="width: 20%" pFrozenColumn>
+        Name <p-sortIcon field="ticker"></p-sortIcon>
+      </th>
+      <th pSortableColumn="lastClosePrice">
+        Last Close Price <p-sortIcon field="lastClosePrice"></p-sortIcon>
+      </th>
+      <th pSortableColumn="priceTarget.average">
+        Average Price Target
+        <p-sortIcon field="priceTarget.average"></p-sortIcon>
+      </th>
+      <th pSortableColumn="profitMargin">
+        Profit Margin <p-sortIcon field="profitMargin"></p-sortIcon>
+      </th>
+      <th pSortableColumn="industry">
+        Industry <p-sortIcon field="industry"></p-sortIcon>
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-asset let-columns="columns">
+    <tr [routerLink]="[asset.id]">
+      <td pFrozenColumn>
+        @if(asset.logoUrl) {
+        <img
+          class="h-3rem w-3rem"
+          [src]="asset.logoUrl"
+          [alt]="asset.companyName"
+        />
+        } @else {
+        <i class="pi pi-image text-6xl"></i>
+        }
+      </td>
+      <td pFrozenColumn>
+        {{ asset.ticker }}
+        <p class="m-0 text-sm text-gray-500">{{ asset.name }}</p>
+      </td>
+      <td>{{ asset.lastClosePrice }} {{ asset.currency }}</td>
+      <td>
+        @if(asset.priceTarget) {
+        {{ asset.priceTarget.average }} {{ asset.currency }}
+        }
+      </td>
+      <td>
+        @if(asset.profitMargin) {
+        <span [ngClass]="getMarginClass(asset.profitMargin)">{{
+          asset.profitMargin | number : "1.2-2"
+        }}</span>
+        }
+      </td>
+      <td>{{ asset.industry }}</td>
+    </tr>
+  </ng-template>
+</p-table>
