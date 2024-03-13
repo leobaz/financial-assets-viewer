@@ -18,8 +18,9 @@ To install the Angular CLI, open a terminal window and run the following command
 ## Run the application
 
 1. Navigate to the workspace folder,
-2. Run the following command `ng serve`
-3. Navigate to `http://localhost:4200/`
+2. Install all dependencies `npm install`
+3. Run the following command `ng serve`
+4. Navigate to `http://localhost:4200/`
 
 ### Android Embeddability with Ionic
 
